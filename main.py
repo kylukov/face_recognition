@@ -13,14 +13,14 @@ def get_user_city(user_id):
 
 
 def get_user_photo(user_id):
-    """Downloading avatar photo from vk user""""
+    """Downloading avatar photo from vk user"""
     photo = vk_session.method('users.get', {'user_ids': {user_id}, "fields": 'photo_400_orig'})
     users_photo = photo[0]['photo_400_orig']
     wget.download(users_photo)
 
 
 def get_username(user_id):
-    """Get first and second name of user""""
+    """Get first and second name of user"""
     user = vk_session.method("users.get", {"user_ids": {user_id}})
     fullname = user[0]['first_name'] +  ' ' + user[0]['last_name']
     return fullname
